@@ -15,7 +15,7 @@ class _WebControllerState extends State<WebController> {
   @override
   Widget build(BuildContext context) {
     if (kIsWeb) {
-      return LoginPage();
+      return WebMain();
     } else {
       return const MobileDashboard();
     }

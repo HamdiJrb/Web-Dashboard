@@ -1,3 +1,6 @@
+import 'package:dashboard_web/Web/Geographical%20Distribution/geo_distribution.dart';
+import 'package:dashboard_web/Web/In-Demand%20Field/indemand_fields.dart';
+import 'package:dashboard_web/Web/Popular%20Fields/popular_fields.dart';
 import 'package:dashboard_web/Web/Specialties/sepecialties_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -28,19 +31,14 @@ class _DashboardPageState extends State<DashboardPage> {
         'onTap': navigateToSpecialties,
       },
       {
-        'title': 'Employer Information',
+        'title': 'Popular Fields Among Esprit Students',
         'imagePath': 'Assets/images/employer.png',
-        'onTap': navigateToEmployerInfo,
+        'onTap': navigateToPopularFieldDetails,
       },
       {
         'title': 'Geographical Distribution of Alumni',
         'imagePath': 'Assets/images/geographic_graph.png',
         'onTap': navigateToGeographicDist,
-      },
-      {
-        'title': 'Career Paths',
-        'imagePath': 'Assets/images/career.png',
-        'onTap': navigateToCareerPaths,
       },
     ];
   }
@@ -48,35 +46,28 @@ class _DashboardPageState extends State<DashboardPage> {
   void navigateToFieldDetails() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SpecialtiesDetail()),
+      MaterialPageRoute(builder: (context) => const InDemandFields()),
     );
   }
 
   void navigateToSpecialties() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SpecialtiesDetail()),
+      MaterialPageRoute(builder: (context) => const SpecialtiesDetail()),
     );
   }
 
-  void navigateToEmployerInfo() {
+  void navigateToPopularFieldDetails() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SpecialtiesDetail()),
+      MaterialPageRoute(builder: (context) => const PopularFields()),
     );
   }
 
   void navigateToGeographicDist() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SpecialtiesDetail()),
-    );
-  }
-
-  void navigateToCareerPaths() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => SpecialtiesDetail()),
+      MaterialPageRoute(builder: (context) => const GeoDistribution()),
     );
   }
 
@@ -119,7 +110,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                     SizedBox(
-                      width: screenWidth / 35,
+                      width: screenWidth / 50,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30.0),
@@ -127,7 +118,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         'Dashboard',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30,
+                          fontSize: screenWidth / 32,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -144,7 +135,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         mainAxisSpacing: 40.0,
                         children: elements.map((el) {
                           return GestureDetector(
-                            onTap: elements[0]['onTap'],
+                            onTap: el['onTap'],
                             child: Card(
                               elevation: 10.0,
                               child: Column(
@@ -160,12 +151,19 @@ class _DashboardPageState extends State<DashboardPage> {
                                         left: 22.0,
                                         right: 22.0,
                                         bottom: 5.0),
-                                    child: Text(el['title'],
+                                    child: Center(
+                                      child: Text(
+                                        el['title'],
                                         style: TextStyle(
-                                            fontFamily: 'Mukta Malar',
-                                            fontSize: screenWidth / 60,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black)),
+                                          fontFamily: 'Mukta Malar',
+                                          fontSize: screenWidth / 63,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                        textAlign: TextAlign
+                                            .center, // center the text horizontally
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),

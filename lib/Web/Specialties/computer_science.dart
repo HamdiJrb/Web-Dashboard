@@ -68,7 +68,11 @@ class _ComputeScienceState extends State<ComputeScience> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, constraints) {
+      builder: (BuildContext context, BoxConstraints constraints) {
+        double screenWidth = constraints.maxWidth;
+        double screenHeight = constraints.maxHeight;
+        bool isSmallScreen = screenWidth < 768;
+
         return Scaffold(
           body: Container(
             decoration: BoxDecoration(
@@ -109,16 +113,67 @@ class _ComputeScienceState extends State<ComputeScience> {
                           : constraints.maxHeight / 2.9,
                     ),
                     Container(
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmallScreen
+                            ? 44.0
+                            : 110.0, /*vertical: isSmallScreen ? 20.0 : 40.0,*/
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          _buildContainerXL(
-                            Icons.computer,
-                            'COMPUTER SCIENCE',
-                            'Mastery of software engineering techniques (methods, languages & tools) and user interaction for the design of embedded software and information systems. Acquisition of skills in the design and deployment of systems and networks at the software/hardware interface. The computer science specialty is divided into a first common core cycle with the telecommunications specialty, and a second cycle consisting of different paths that represent options.',
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                              color: Colors.white,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.computer,
+                                        size: 40.0,
+                                        color: Color.fromARGB(255, 112, 0, 0),
+                                      ),
+                                      //Image.asset(imagePath, width: 40.0, height: 40.0),
+                                      SizedBox(width: 15),
+                                      Text(
+                                        'COMPUTER SCIENCE',
+                                        style: TextStyle(
+                                            fontSize:
+                                                isSmallScreen ? 24.0 : 30.0,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Mukta Malar',
+                                            color:
+                                                Color.fromARGB(255, 178, 0, 0)),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 15),
+                                  Text(
+                                    'Mastery of software engineering techniques (methods, languages & tools) and user interaction for the design of embedded software and information systems. Acquisition of skills in the design and deployment of systems and networks at the software/hardware interface. The computer science specialty is divided into a first common core cycle with the telecommunications specialty, and a second cycle consisting of different paths that represent options.',
+                                    style: TextStyle(
+                                        fontSize: isSmallScreen ? 16.0 : 24.0,
+                                        fontFamily: 'Mukta Malar',
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.grey[800]),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          SizedBox(height: 25.0),
+                          SizedBox(height: 40.0),
                         ],
                       ),
                     ),
@@ -203,9 +258,9 @@ class _ComputeScienceState extends State<ComputeScience> {
     );
   }
 
-  Widget _buildContainerXL(IconData iconData, String title, String text) {
+  /*Widget _buildContainerXL(IconData iconData, String title, String text) {
     return Container(
-      width: MediaQuery.of(context).size.width / 1.17,
+      width: MediaQuery.of(context).size.width / 2,
       height: MediaQuery.of(context).size.height / 1.6,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25.0),
@@ -256,7 +311,7 @@ class _ComputeScienceState extends State<ComputeScience> {
         ),
       ),
     );
-  }
+  }*/
 }
 
 class Item {

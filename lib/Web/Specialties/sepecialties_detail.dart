@@ -1,4 +1,6 @@
+import 'package:dashboard_web/Web/Specialties/civil.dart';
 import 'package:dashboard_web/Web/Specialties/computer_science.dart';
+import 'package:dashboard_web/Web/Specialties/electro.dart';
 import 'package:dashboard_web/Web/Specialties/telecom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -79,8 +81,7 @@ class _SpecialtiesDetailState extends State<SpecialtiesDetail> {
                         'Work on designing new structures, assessing the safety and stability of existing structures, and developing plans to manage environmental risks.',
                         () => Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => ComputeScience()),
+                          MaterialPageRoute(builder: (context) => Civil()),
                         ),
                       ),
                       SizedBox(height: 25.0),
@@ -90,8 +91,7 @@ class _SpecialtiesDetailState extends State<SpecialtiesDetail> {
                         'Work on designing control systems for machines and robots to developing renewable energy systems.',
                         () => Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => ComputeScience()),
+                          MaterialPageRoute(builder: (context) => Elecro()),
                         ),
                       ),
                     ],
@@ -122,7 +122,7 @@ class _SpecialtiesDetailState extends State<SpecialtiesDetail> {
       //onTap: onTap,
       child: Container(
         width: containerWidth,
-        height: containerHeight,
+        //height: containerHeight,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25.0),
           boxShadow: [
